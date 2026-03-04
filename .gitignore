@@ -23,3 +23,17 @@ offline-site/*
 archive/raw/
 
 offline-site/_mirror_failures.txt
+
+# Python packaging artifacts
+*.egg-info/
+build/
+dist/
+pip-wheel-metadata/
+
+# Local env/secrets
+.env
+.env.*
+*.local
+
+# Optional capture artifacts
+*.har

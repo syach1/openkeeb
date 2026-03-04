@@ -17,7 +17,7 @@ Follow these steps in order.
 ### 2) Clone this repository
 
 ```bash
-git clone <YOUR_REPO_URL> OpenKeeb
+git clone https://github.com/syach1/openkeeb.git OpenKeeb
 cd OpenKeeb
 ```
 

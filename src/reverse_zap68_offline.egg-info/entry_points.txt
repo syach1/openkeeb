@@ -1,5 +1,0 @@
-[console_scripts]
-offline-mirror-build = offline_mirror.__main__:run
-offline-mirror-serve = offline_mirror.server:main
-openkeeb-build = offline_mirror.__main__:run
-openkeeb-serve = offline_mirror.server:main
