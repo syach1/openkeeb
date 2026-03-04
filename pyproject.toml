@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reverse-zap68-offline"
+version = "0.1.0"
+description = "OpenKeeb offline mirror builder and local Linux WebHID runtime for qmk.top"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "OpenKeeb contributors" }]
+keywords = ["openkeeb", "webhid", "keyboard", "offline", "linux", "qmk"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Build Tools",
+]
+dependencies = ["tqdm>=4.66.0"]
+
+[project.optional-dependencies]
+brotli = ["brotli>=1.1.0"]
+
+[project.scripts]
+openkeeb-build = "offline_mirror.__main__:run"
+openkeeb-serve = "offline_mirror.server:main"
+offline-mirror-build = "offline_mirror.__main__:run"
+offline-mirror-serve = "offline_mirror.server:main"
+
+[tool.setuptools]
+include-package-data = true
+py-modules = ["serve_offline", "build_offline_mirror"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["offline_mirror*"]
+
+[tool.setuptools.package-data]
+offline_mirror = ["assets/*"]
+
+[tool.pyright]
+extraPaths = ["src"]

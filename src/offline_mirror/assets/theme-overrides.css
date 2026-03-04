@@ -1,0 +1,12 @@
+:root[data-ui-theme="classic"] {
+    --surface-base: #f9f9f9;
+    --surface-strong: #3e3e3e;
+    --surface-elevated: #4b4b4b;
+    --surface-contrast: #5e5e5e;
+    --glow-cyan: 116, 235, 213;
+    --glow-blue: 113, 164, 241;
+}
+
+.ui-theme-switcher {
+    display: none !important;
+}
