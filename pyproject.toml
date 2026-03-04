@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "reverse-zap68-offline"
+name = "openkeeb-offline"
 version = "0.1.0"
 description = "OpenKeeb offline mirror builder and local Linux WebHID runtime for qmk.top"
 readme = "README.md"

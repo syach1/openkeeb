@@ -2,8 +2,6 @@
 
 OpenKeeb is an offline Linux-friendly mirror and patch tool for the `https://www.qmk.top/` web driver.
 
-This project was previously named `reverse-zap68`. For compatibility, some internal module and command names still use legacy `offline_mirror` naming.
-
 ## Quick start for new users
 
 Follow these steps in order.
@@ -46,6 +44,10 @@ pip install -e .
 ```bash
 python build_offline_mirror.py
 ```
+
+The build will take some time. You will see a progress bar and patch steps in the terminal while it runs.
+
+![Build progress and patch output in terminal](image/rebuild.png)
 
 ### 6) Run the local server
 
@@ -144,6 +146,5 @@ sudo udevadm trigger
 
 ## Additional docs
 
-- Project history and chronology: `docs/history.md`
 - Generated-output note for mirror root: `offline-site/README.md`
 - Legal/compliance details: `LEGAL.md`

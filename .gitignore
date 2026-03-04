@@ -37,3 +37,6 @@ pip-wheel-metadata/
 
 # Optional capture artifacts
 *.har
+
+# Local documentation drafts
+docs/
