@@ -1,6 +1,6 @@
 # OpenKeeb
 
-OpenKeeb is an offline Linux-friendly mirror and patch tool for the `https://www.qmk.top/` web driver.
+OpenKeeb is an offline Linux-focused rebuild of the `https://www.qmk.top/` web driver. It mirrors the app locally and applies offline hardening to neuter telemetry and tracking egress: cloud API/download endpoints are rewritten to local `/offline-disabled/*` placeholders, AI helper and external-link surfaces are removed, a strict Content Security Policy limits connections to localhost/self, and a runtime offline guard blocks non-local `fetch`, `XMLHttpRequest`, `WebSocket`, `EventSource`, `sendBeacon`, `window.open`, and external link navigation. Build-time enforcement checks fail rebuilds if blocked domains or markers reappear.
 
 ## Quick start for new users
 
@@ -12,34 +12,47 @@ Follow these steps in order.
 - Python `3.10+`
 - A Chromium-based browser with WebHID support (Chrome, Chromium, or Edge)
 
-### 2) Clone this repository
+### 2) Set Linux WebHID permissions (udev) (required)
+
+If your keyboard appears in `lsusb` but not in `Add Device`, add a udev rule first.
+
+Check USB IDs:
+
+```bash
+lsusb
+```
+
+Create a rule file:
+
+```bash
+sudo nano /etc/udev/rules.d/50-openkeeb.rules
+```
+
+Add this line and save:
+
+```text
+KERNEL=="hidraw*", ATTRS{idVendor}=="3151", ATTRS{idProduct}=="502f", MODE="0666", TAG+="uaccess"
+```
+
+If your board uses different IDs, replace `3151` and `502f` with your values from `lsusb`.
+
+Reload rules:
+
+```bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+Replug the keyboard and fully restart the browser.
+
+### 3) Clone this repository
 
 ```bash
 git clone https://github.com/syach1/openkeeb.git OpenKeeb
 cd OpenKeeb
 ```
 
-Example URL format:
-
-```text
-https://github.com/<your-username>/OpenKeeb.git
-```
-
-### 3) Create and activate a virtual environment
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 4) Install project dependencies
-
-```bash
-pip install --upgrade pip
-pip install -e .
-```
-
-### 5) Build the local offline site
+### 4) Build the local offline site
 
 ```bash
 python build_offline_mirror.py
@@ -49,7 +62,7 @@ The build will take some time. You will see a progress bar and patch steps in th
 
 ![Build progress and patch output in terminal](image/rebuild.png)
 
-### 6) Run the local server
+### 5) Run the local server
 
 ```bash
 ./run_offline.sh
@@ -61,7 +74,7 @@ Open this URL in your browser:
 http://127.0.0.1:4173/
 ```
 
-### 7) Connect your keyboard
+### 6) Connect your keyboard
 
 - Click `Add Device` in the web UI.
 - Select your keyboard in the browser dialog.
@@ -75,53 +88,6 @@ http://127.0.0.1:4173/
 - Keep orphaned files for diagnostics: `python build_offline_mirror.py --no-prune-orphans`
 - Disable crawl progress output: `python build_offline_mirror.py --no-progress`
 
-## CLI command aliases
-
-After `pip install -e .`, both new and legacy command names are available:
-
-- New OpenKeeb aliases: `openkeeb-build`, `openkeeb-serve`
-- Legacy aliases (kept for compatibility): `offline-mirror-build`, `offline-mirror-serve`
-
-Direct Python entrypoints also work:
-
-```bash
-python build_offline_mirror.py
-python -m offline_mirror
-python serve_offline.py
-```
-
-## Linux WebHID permissions (udev)
-
-If your keyboard appears in `lsusb` but not in `Add Device`, add a udev rule.
-
-1. Check USB IDs:
-
-```bash
-lsusb
-```
-
-2. Create a rule file:
-
-```bash
-sudo nano /etc/udev/rules.d/50-openkeeb.rules
-```
-
-3. Add this line and save:
-
-```text
-KERNEL=="hidraw*", ATTRS{idVendor}=="3151", ATTRS{idProduct}=="502f", MODE="0666", TAG+="uaccess"
-```
-
-If your board uses different IDs, replace `3151` and `502f` with your values from `lsusb`.
-
-4. Reload rules:
-
-```bash
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-```
-
-5. Replug the keyboard and fully restart the browser.
 
 ## Troubleshooting
 
