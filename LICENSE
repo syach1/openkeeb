@@ -19,18 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Additional notice (scope and third-party content)
-
-The MIT license above applies only to original source code and documentation
-in this repository.
-
-This repository is an independent interoperability tool and is not affiliated
-with, endorsed by, or sponsored by EPOMAKER, Rongyuan, GearHub, or qmk.top.
-
-This repository does not grant rights to third-party software, trademarks, or
-assets. Generated runtime output under `offline-site/` may include third-party
-content downloaded from upstream sources at build time; those assets remain
-subject to their original owners' terms and licenses.
