@@ -376,6 +376,7 @@ def test_apply_linux_patches_scans_reachable_files_only(tmp_path) -> None:
         '!ux.isNoAIAssistant()&&d.jsx(y.Suspense,{fallback:d.jsx(d.Fragment,{}),children:d.jsx(Goe,{deviceName:v.getCurrentDevice().deviceType.displayName??"",useProductionServer:!0,company:v.getCurrentDevice().deviceType.company,deviceType:v.getCurrentDevice().deviceType.type})});'
         'window.open("https://beian.miit.gov.cn/#/Integrated/index","_blank");'
         'window.open("https://qmk.top/gear-lab","_self");'
+        'let a=U7.find(u=>u.id===e&&!n.has(u.company)&&!RT.has(u.displayName));'
         'oldDriverUrl=window.location.hostname.toLowerCase().includes("qmk")?"https://iotdriver.qmk.top/":(window.location.hostname.toLowerCase().includes("gearhub"),"https://iotdriver.gearhub.top/");'
         'get iotDownloadUrl(){const e=this.getPlatform();return e?`https://news.rongyuan.tech/iot_driver/${e}/iot_manager_setup_v${e==="mac"?X_:$d}.${e==="mac"?"dmg":"exe"}?${new Date().getTime()}`:void 0}get vcredistx86DownloadUrl(){return"https://aka.ms/vs/17/release/vc_redist.x86.exe"}get vcredistx64DownloadUrl(){return"https://aka.ms/vs/17/release/vc_redist.x64.exe"};'
         'ff="https://api3.rongyuan.tech:3816/api/v2",gf="https://api3.rongyuan.tech:3816/download/bit_image_file"):(ff="https://api2.qmk.top:3816/api/v2",gf="https://api2.qmk.top:3816/download/bit_image_file");'
